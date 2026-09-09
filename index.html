@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lamassu — Interactive 3D Viewer</title>
+<style>
+  :root {
+    --bg: #14100c;
+    --panel: #1e1812;
+    --accent: #c9a55c;
+    --text: #ede4d3;
+    --text-dim: #b8ac95;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Palatino Linotype', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px 16px 40px;
+  }
+  header {
+    text-align: center;
+    max-width: 760px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+    margin: 0 0 6px;
+    color: var(--accent);
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    font-style: italic;
+    margin: 0;
+  }
+  .viewer-wrap {
+    width: 100%;
+    max-width: 900px;
+    background: var(--panel);
+    border: 1px solid #3a3025;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    padding-top: 66.6%; /* 3:2 aspect ratio, matches Sketchfab embed */
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000;
+  }
+  .iframe-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  .hint {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 10px;
+  }
+  .info-panel {
+    max-width: 900px;
+    width: 100%;
+    margin-top: 22px;
+    background: var(--panel);
+    border: 1px solid #3a3025;
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .info-panel h2 {
+    margin-top: 0;
+    font-size: 1.15rem;
+    color: var(--accent);
+    border-bottom: 1px solid #3a3025;
+    padding-bottom: 8px;
+  }
+  .info-panel p {
+    line-height: 1.6;
+    color: var(--text);
+    font-size: 0.98rem;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .meta-item {
+    background: #241d15;
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .meta-item .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .meta-item .value {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  footer {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    margin-top: 18px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Lamassu</h1>
+  <p class="subtitle">A human-headed, winged bull — Assyrian palace guardian</p>
+</header>
+
+<div class="viewer-wrap">
+  <div class="iframe-container">
+    <iframe
+      title="Lamassu 3D model"
+      src="https://sketchfab.com/models/fb3d891226f1434d806cfc678c4c588a/embed?autostart=0&ui_theme=dark"
+      allow="autoplay; fullscreen; xr-spatial-tracking"
+      xr-spatial-tracking
+      execution-while-out-of-viewport
+      execution-while-not-rendered
+      web-share
+      allowfullscreen
+      mozallowfullscreen="true"
+      webkitallowfullscreen="true">
+    </iframe>
+  </div>
+  <p class="hint">Drag to rotate · Scroll to zoom · Right-click drag to pan · Click the play button to load the model</p>
+</div>
+
+<div class="info-panel">
+  <h2>About this object</h2>
+  <p>
+    This alabaster lamassu — a protective spirit with a human head, the body of a bull or lion, and eagle's wings —
+    once flanked a doorway in the throne room of Ashurnasirpal II's Northwest Palace at Nimrud. Carved in relief
+    from a single slab, it was designed to be seen from the front or the side: look closely at the legs and
+    you'll find five of them, an Assyrian solution that makes the figure read as standing still from the front
+    and striding forward from the side. A cuneiform inscription runs across the surface, part of a standard
+    royal text that Ashurnasirpal had repeated throughout his palace.
+  </p>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Culture</span><span class="value">Neo-Assyrian</span></div>
+    <div class="meta-item"><span class="label">Site</span><span class="value">Northwest Palace, Nimrud</span></div>
+    <div class="meta-item"><span class="label">Material</span><span class="value">Alabaster (gypsum)</span></div>
+    <div class="meta-item"><span class="label">Ruler</span><span class="value">Ashurnasirpal II</span></div>
+  </div>
+</div>
+
+<footer>
+  3D model: <a href="https://sketchfab.com/3d-models/lamassu-fb3d891226f1434d806cfc678c4c588a" target="_blank" rel="noopener">"Lamassu" by danielpett on Sketchfab</a>,
+  licensed <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC Attribution 4.0</a>.
+</footer>
+
+</body>
+</html>
